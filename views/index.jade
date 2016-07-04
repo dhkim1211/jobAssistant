@@ -1,0 +1,42 @@
+extends layout
+
+block content
+
+	body(ng-app='help')
+		div(class='col m4')
+			nav(class='teal lighten-2')
+				.nav-wrapper
+					ul.right.hide-on-med-and-down
+						li 
+							a(href='#') Search Jobs
+						li 
+							a(href='#') Search Careers
+						li 
+							a(href='#') Search Companies
+		p hello
+		div(ng-view)
+	
+	script(src="/javascripts/app.js")
+	//- script(src="/javascripts/routes.js")
+	//- script(src="/javascripts/controllers/job.js")
+	script(src="/javascripts/controllers/search.js")
+
+	script.
+		$(document).ready(function(){
+		  $('.button-collapse').sideNav({
+		    menuWidth: 300, // Default is 240
+		    edge: 'right', // Choose the horizontal origin
+		    closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+		    }
+		  ); 
+		});
+
+
+
+
+	
+
+
+
+
+

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+		h3 Explore Career Paths as a '#{results.response.jobTitle}'
+		ul
+			li Low Salary: $#{results.response.payLow}
+			li Median Salary: $#{results.response.payMedian}
+			li High Salary: $#{results.response.payHigh}
+		form(action="/v1/jobsearch?keyword=#{results.response.jobTitle}", method="GET", class="jobsearch")
+			div.input-field.row
+				p Look for '#{results.response.jobTitle}' jobs in
+				input(type="text", placeholder="location", class="validate col m2", name="location")
+				button(type="submit", class="btn") Submit
+
+		p Related Careers:
+		each result in results.response.results
+			ul 
+				li Job Title: 
+					a(href="/v1/jobprogress?jobtitle=#{result.nextJobTitle}") #{result.nextJobTitle}
+				li Frequency %: #{result.frequencyPercent}
+				li National Jobs: #{result.nationalJobCount}
+				li Median Salary: #{result.medianSalary}

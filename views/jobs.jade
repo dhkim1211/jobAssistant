@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	h3 Job Search Results:
+	each jobresult in results
+		ul
+			li 
+				a(href='#{jobresult.url}') #{jobresult.title} 
+				@ 
+				a(href="/v1/employers?keyword=#{jobresult.company}&location=#{jobresult.location}") #{jobresult.company} 
+			li #{jobresult.location}
+			li Posted On: #{jobresult.createdAt}
+			li 
+				em #{jobresult.description}
+
+				
+				

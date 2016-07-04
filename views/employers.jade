@@ -1,0 +1,25 @@
+extends layout
+
+block content
+		h3 Search Results:
+		p #{results.response.totalRecordCount} companies found
+
+		each result in results.response.employers
+			img(src="#{result.squareLogo}")
+			ul 
+				li Company: 
+					a(href="/v1/jobsearchbyco?company=#{result.name}") #{result.name}
+				li Website: #{result.website}
+				li Industry: #{result.industry}, #{result.sectorName}
+				li Overall Rating: #{result.overallRating} - #{result.ratingDescription}
+					ul
+						li Culture & Values: #{result.cultureAndValuesRating}
+						li Senior Leadership: #{result.seniorLeadershipRating}
+						li Compensation & Benefits: #{result.compensationAndBenefitsRating}
+						li Career Opportunities: #{result.careerOpportunitiesRating}
+						li Work Life Balance: #{result.workLifeBalanceRating}
+						li Recommend To Friend: #{result.recommendToFriendRating}
+
+			
+
+

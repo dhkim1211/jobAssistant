@@ -1,0 +1,45 @@
+extends layout
+
+block content
+	h3 Search Jobs
+	
+	form(action="/v1/jobsearch", method="GET", class="jobsearch")
+		div.input-field.row
+			input(type="text", placeholder="Job Title or Company Name", class="validate col m8", name="keyword")
+			input(type="text", placeholder="Location (City, State)", class="validate col m8", name="location")
+			select(class="col m8" name="country", type="text")
+				option(value="", disable selected) Choose Country
+				option(value="us") United States
+				option(value="ar") Argentina
+				option(value="au") Australia
+				option(value="at") Austria
+				option(value="be") Belgium
+				option(value="br") Brazil
+				option(value="ca") Canada
+				option(value="cl") Chile
+				option(value="cn") Canada
+				option(value="co") Colombia
+				option(value="cz") Czech Republic
+				option(value="dk") Denmark
+				option(value="fi") Finland
+				option(value="fr") France
+				option(value="de") Germany
+				option(value="gr") Greece
+				option(value="hk") Hong Kong
+				option(value="mx") Mexico
+				option(value="nl") Netherlands
+				option(value="es") Spain
+		button(type="submit", class="btn") Submit
+
+	h3 Search Career Paths
+	form(action="/v1/jobprogress", method="GET", class="jobprogress")
+		div.input-field.row
+			input(type="text", placeholder="Enter Job Title", class="validate col m8", name="jobtitle")
+		button(type="submit", class="btn") Submit
+
+	h3 Search Companies
+	form(action="/v1/employers", method="GET", class="employers")
+		div.input-field.row
+			input(type="text", placeholder="Enter Company Name", class="validate col m8", name="company")
+			input(type="text", placeholder="Enter Company Location", class="validate col m8", name="location")
+		button(type="submit", class="btn") Submit
