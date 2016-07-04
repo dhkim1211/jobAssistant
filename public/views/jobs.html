@@ -1,0 +1,16 @@
+<div class="col m12" ng-controller="JobsCtrl">
+	<div class="row">
+		<div class="col m10 offset-m1 col s6">
+			<h3>Job Search Results:</h3>
+			<div ng-repeat="job in jobs">
+				<ul>
+					<li><a href="{{job.url}}">{{job.title}}</a> @ <a href ng-click="searchCompanyTwo(job.company, job.location)">{{job.company}}</a></li>
+					<li>{{job.location}}</li>
+					<li>Posted On: {{job.createdAt}}</li>
+					<li><em>{{job.description}}</em></li>
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+</div>

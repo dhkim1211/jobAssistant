@@ -1,61 +1,69 @@
-<div class="col m12">
-	<div class="row">
-		<div class="col m10 offset-m1 col s6">
-			<h3>Search Jobs</h3>
+<div>	
 
-			<form class="jobsearch", ng-submit="submit()">
-				<div class = "input-field row">
-					<input type="text", placeholder="Job Title or Company Name", class="validate col m8", name="keyword">
-					<input type="text", placeholder="Location (City, State)", class="validate col m8", name="location">
-					<select class="col m8" name="country", type="text">
-						<option value="", disable selected>Choose Country</option>
-						<option value="us">United States</option>
-						<option value="ar"> Argentina</option>
-						<option value="au"> Australia</option>
-						<option value="at"> Austria</option>
-						<option value="be"> Belgium</option>
-						<option value="br"> Brazil</option>
-						<option value="ca"> Canada</option>
-						<option value="cl"> Chile</option>
-						<option value="cn"> Canada</option>
-						<option value="co"> Colombia</option>
-						<option value="cz"> Czech Republic</option>
-						<option value="dk"> Denmark</option>
-						<option value="fi"> Finland</option>
-						<option value="fr"> France</option>
-						<option value="de"> Germany</option>
-						<option value="gr"> Greece</option>
-						<option value="hk"> Hong Kong</option>
-						<option value="mx"> Mexico</option>
-						<option value="nl"> Netherlands</option>
-						<option value="es"> Spain</option>
-					</select>
-				</div>
-				<button type="submit", class="btn", value="submit">Submit</button>
-			</form>
-		</div>
+	<!--Home Search page -->
+	<div class="col m12">
+		<div class="row">
+			<div class="col m10 offset-m1 col s6">
+				<h3>Search Jobs</h3>
 
-		<div class="col m10 offset-m1 col s6">
-			<h3>Search Careers</h3>
+				<form class="jobsearch", ng-submit="submit()">
+					<div class = "input-field row">
+						<input type="text", placeholder="Job Title or Company Name", class="validate col m8 form-control", name="keyword", ng-model="formData.keyword">
+						<input type="text", placeholder="Location (City, State)", class="validate col m8 form-control", name="location", ng-model="formData.location">
+						<select class="col m8 form-control" name="country", type="text", ng-model="formData.country">
+							<option value="", disable selected>Choose Country</option>
+							<option value="us">United States</option>
+							<option value="ar"> Argentina</option>
+							<option value="au"> Australia</option>
+							<option value="at"> Austria</option>
+							<option value="be"> Belgium</option>
+							<option value="br"> Brazil</option>
+							<option value="ca"> Canada</option>
+							<option value="cl"> Chile</option>
+							<option value="cn"> Canada</option>
+							<option value="co"> Colombia</option>
+							<option value="cz"> Czech Republic</option>
+							<option value="dk"> Denmark</option>
+							<option value="fi"> Finland</option>
+							<option value="fr"> France</option>
+							<option value="de"> Germany</option>
+							<option value="gr"> Greece</option>
+							<option value="hk"> Hong Kong</option>
+							<option value="mx"> Mexico</option>
+							<option value="nl"> Netherlands</option>
+							<option value="es"> Spain</option>
+						</select>
+					</div>
+					<button type="submit", class="btn", value="submit">Submit</button>
+				</form>
+			</div>
 
-			<form action="/v1/jobprogress", method="GET", class="jobprogress">
-				<div class = "input-field row">
-					<input type="text", placeholder="Enter Job Title", class="validate col m8", name="jobtitle">
-				</div>
-				<button type="submit", class="btn">Submit</button>
-			</form>
-		</div>
+			<div class="col m10 offset-m1 col s6">
+				<h3>Search Careers</h3>
 
-		<div class="col m10 offset-m1 col s6">
-			<h3>Search Companies</h3>
+				<form class="jobprogress", ng-submit="submitProgress()">
+					<div class = "input-field row">
+						<input type="text", placeholder="Enter Job Title", class="validate col m8", name="jobtitle", ng-model="formData.jobtitle">
+					</div>
+					<button type="submit", class="btn">Submit</button>
+				</form>
+			</div>
 
-			<form action="/v1/employers", method="GET", class="employers">
-				<div class = "input-field row">
-					<input type="text", placeholder="Enter Company Name", class="validate col m8", name="company">
-					<input type="text", placeholder="Enter Company Location", class="validate col m8", name="location">
-				</div>
-				<button type="submit", class="btn">Submit</button>
-			</form>
+			<div class="col m10 offset-m1 col s6">
+				<h3>Search Companies</h3>
+
+				<form class="employers", ng-submit="searchCompany()">
+					<div class = "input-field row">
+						<input type="text", placeholder="Enter Company Name", class="validate col m8", name="company", ng-model="formData.companyname">
+						<input type="text", placeholder="Enter Company Location", class="validate col m8", name="location", ng-model="formData.companylocation">
+					</div>
+					<button type="submit", class="btn">Submit</button>
+				</form>
+			</div>
 		</div>
 	</div>
+
+
+
+	
 </div>

@@ -5,7 +5,7 @@ var rp = require('request-promise');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendfile('index.html'));
+  res.sendfile('index.html');
 });
 
 //GET JOBS FROM INDEED
@@ -73,8 +73,8 @@ router.get('/v1/jobsearch/', function(req, res) {
 	        }
 	        
 	        //res.send(jobs);
-	        res.render('jobs', {results:jobs});
-	        //res.send(jobs);
+	        //res.render('jobs', {results:jobs});
+	        res.send(jobs);
 	    }
 
 	});
@@ -143,8 +143,8 @@ router.get('/v1/jobsearchbyco/', function(req, res) {
 	        }
 	        
 	        //res.send(jobs);
-	        res.render('jobs', {results:jobs});
-	        //res.send(jobs);
+	        //res.render('jobs', {results:jobs});
+	        res.send(jobs);
 	    }
 
 	});
@@ -173,8 +173,8 @@ router.get('/v1/jobprogress/', function(req, res) {
 	    } else {
 	        console.log(response.statusCode, body);
 	        body = JSON.parse(body);
-	        res.render('careers', {results: body});
-	        //res.send(body);
+	        //res.render('careers', {results: body});
+	        res.send(body);
 	    }
 
 	});
@@ -203,8 +203,8 @@ router.get('/v1/employers/', function(req, res) {
 	    } else {
 	        console.log(response.statusCode, body);
 	        body = JSON.parse(body);
-	        res.render('employers', {results: body});
-	        //res.send(body);
+	        //res.render('employers', {results: body});
+	        res.send(body);
 	    }
 
 	});
