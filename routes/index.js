@@ -3,13 +3,49 @@ var router = express.Router();
 var request = require('request');
 var rp = require('request-promise');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.sendfile('index.html');
-});
+var isValidPassword = function(user, password){
+  return bCrypt.compareSync(password, user.password);
+}
 
-//GET JOBS FROM INDEED
-router.get('/v1/jobsearch/', function(req, res) {
+module.exports = function(passport) {
+	/* GET login page. */
+	router.get('/', function(req, res) {
+	// Display the Login page with any flash message, if any
+	res.render('signin', { message: req.flash('message') });
+	});
+
+	/* Handle Login POST */
+	router.post('/login', passport.authenticate('login', {
+	successRedirect: '/index2',
+	failureRedirect: '/',
+	failureFlash : true 
+	}));
+
+	/* GET Registration Page */
+	router.get('/register', function(req, res){
+	res.render('register',{message: req.flash('message')});
+	});
+
+	/* Handle Registration POST */
+	router.post('/register', passport.authenticate('signup', {
+	successRedirect: '/index2',
+	failureRedirect: '/signup',
+	failureFlash : true 
+	}));
+
+	/* Handle Logout */
+	router.get('/logout', function(req, res) {
+	  req.logout();
+	  res.redirect('/');
+	});
+
+	/* GET home page. */
+	router.get('/', function(req, res, next) {
+	res.sendfile('index.html');
+	});
+
+	//GET JOBS FROM INDEED
+	router.get('/v1/jobsearch/', function(req, res) {
 	var jobs = [];
 	rp({
 	    url: 'http://api.indeed.com/ads/apisearch', //URL to hit
@@ -79,10 +115,10 @@ router.get('/v1/jobsearch/', function(req, res) {
 
 	});
 	})
-})
+	})
 
-//GET JOBS FROM COMPANY NAME (INDEED)
-router.get('/v1/jobsearchbyco/', function(req, res) {
+	//GET JOBS FROM COMPANY NAME (INDEED)
+	router.get('/v1/jobsearchbyco/', function(req, res) {
 	var jobs = [];
 	rp({
 	    url: 'http://api.indeed.com/ads/apisearch', //URL to hit
@@ -149,10 +185,10 @@ router.get('/v1/jobsearchbyco/', function(req, res) {
 
 	});
 	})
-})
+	})
 
-//GET JOB PROGRESS INFO FROM GLASSDOOR
-router.get('/v1/jobprogress/', function(req, res) {
+	//GET JOB PROGRESS INFO FROM GLASSDOOR
+	router.get('/v1/jobprogress/', function(req, res) {
 	request({
 	    url: 'http://api.glassdoor.com/api/api.htm', //URL to hit
 	    qs: {
@@ -178,10 +214,10 @@ router.get('/v1/jobprogress/', function(req, res) {
 	    }
 
 	});
-})
+	})
 
-//GET COMPANIES FROM GLASSDOOR
-router.get('/v1/employers/', function(req, res) {
+	//GET COMPANIES FROM GLASSDOOR
+	router.get('/v1/employers/', function(req, res) {
 	request({
 	    url: 'http://api.glassdoor.com/api/api.htm', //URL to hit
 	    qs: {
@@ -208,9 +244,9 @@ router.get('/v1/employers/', function(req, res) {
 	    }
 
 	});
-})
+	})
 
-router.get('/v1/glasssearch/', function(req, res) {
+	router.get('/v1/glasssearch/', function(req, res) {
 	request({
 	    url: 'http://api.glassdoor.com/api/api.htm', //URL to hit
 	    qs: {
@@ -239,6 +275,6 @@ router.get('/v1/glasssearch/', function(req, res) {
 	    }
 
 	});
-})
+	})
+}
 
-module.exports = router;

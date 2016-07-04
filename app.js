@@ -10,7 +10,10 @@ var users = require('./routes/users');
 
 var app = express();
 
-
+var dbConfig = require('./models/db.js');
+var mongoose = require('mongoose');
+//connect to db
+mongoose.connect(dbConfig.url);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,6 +33,13 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+// Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // error handlers
 
