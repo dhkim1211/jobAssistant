@@ -41,5 +41,25 @@ angular.module('restaurantPOS', ['ui.router'])
 						templateUrl: '/views/register.html',
 						controller: 'MainCtrl'
 					})
+					.state('profile', {
+						url: '/profile',
+						views: {
+							'': {
+								templateUrl: '/views/profile.html',
+								controller: 'ProfileCtrl'
+							},
+							'myjobs@profile': {
+								templateUrl: 'views/myjobs.html',
+								controller: 'MyJobsCtrl'
+							}
+						}
+					})
+					.state('logout', {
+						url: '/logout',
+						controller: function($window) {
+							User.logout();
+							$state.go('home');
+						}
+					})
 				$locationProvider.html5Mode(true);
 	}])

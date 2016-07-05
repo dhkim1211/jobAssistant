@@ -6,12 +6,13 @@
 			<div class="col m10 offset-m1 col s6">
 				<h3>Search Jobs</h3>
 
-				<form class="jobsearch", ng-submit="submit()">
+				<form id="jobsearch", ng-submit="submit()">
 					<div class = "input-field row">
 						<input type="text", placeholder="Job Title or Company Name", class="validate col m8 form-control", name="keyword", ng-model="formData.keyword">
 						<input type="text", placeholder="Location (City, State)", class="validate col m8 form-control", name="location", ng-model="formData.location">
-						<select class="col m8 form-control" name="country", type="text", ng-model="formData.country">
-							<option value="", disable selected>Choose Country</option>
+<!-- 						<select class="col m8 form-control" name="country", type="text", ng-model="country", form="jobsearch" ng-options="country.name for country in countries"> -->
+
+<!-- 							<option value="", disable selected>Choose Country</option>
 							<option value="us">United States</option>
 							<option value="ar"> Argentina</option>
 							<option value="au"> Australia</option>
@@ -31,7 +32,7 @@
 							<option value="hk"> Hong Kong</option>
 							<option value="mx"> Mexico</option>
 							<option value="nl"> Netherlands</option>
-							<option value="es"> Spain</option>
+							<option value="es"> Spain</option> -->
 						</select>
 					</div>
 					<button type="submit", class="btn", value="submit">Submit</button>

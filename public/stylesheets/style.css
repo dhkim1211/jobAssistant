@@ -5,3 +5,11 @@ body {
 .login {
 	margin: 10px;
 }
+
+.card {
+	padding: 8px 20px;
+}
+
+.card * {
+	margin-top: 8px;
+}

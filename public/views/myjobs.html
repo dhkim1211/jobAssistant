@@ -1,0 +1,12 @@
+<div class="col m8 offset-m1 col s12 card yellow lighten-5" ng-controller="MyJobsCtrl">
+		<h3>My Saved Jobs:</h3>
+		<div class="card teal lighten-4" ng-repeat="job in myjobs.data | orderBy: 'createdAt'">
+			<ul>
+				<li><a href ng-click="newTab(job.url)">{{job.jobtitle}}</a> @ <a href ng-click="searchCompanyTwo(job.company, job.location)">{{job.company}}</a></li>
+				<li>{{job.location}}</li>
+				<li><em>{{job.description | limitTo: 400}}</em></li>
+				<button class="btn red lighten-2" ng-click="saveJob(job.title, job.company, job.location, job.description, job.url)">Save Job</button>
+			</ul>
+			
+		</div>
+</div>

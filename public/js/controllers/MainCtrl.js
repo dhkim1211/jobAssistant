@@ -1,19 +1,22 @@
 angular.module('restaurantPOS')
-.controller('MainCtrl', ['$scope', '$http', '$location', '$rootScope', '$state',
-	function($scope, $http, $location, $rootScope, $state) {
+.controller('MainCtrl', ['$scope', '$http', '$location', '$rootScope', '$state', '$window',
+	function($scope, $http, $location, $rootScope, $state, $window) {
 		$scope.formData = {keyword:'', location:'', country:''};
 		$scope.views = 'search';
 
+		$scope.newTab = function(url) {
+			$window.open(url, '_blank');
+		}
+		
 		//GET JOB SEARCH RESULTS
 		$scope.submit = function() {
-			console.log('yo')
+			console.log($scope.formData.country)
 			$http({
 				url: '/v1/jobsearch',
 				method: 'GET',
 				params: {
 					keyword: $scope.formData.keyword,
-					location: $scope.formData.location,
-					country: $scope.formData.country
+					location: $scope.formData.location
 				}
 			}).success(function(data){
 				$scope.views = 'jobs';

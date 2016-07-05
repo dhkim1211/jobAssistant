@@ -7,29 +7,25 @@ var isValidPassword = function(user, password){
   return bCrypt.compareSync(password, user.password);
 }
 
+var isAuthenticated = function (req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  res.redirect('/');
+}
+
 module.exports = function(passport) {
-	/* GET login page. */
-	router.get('/', function(req, res) {
-	// Display the Login page with any flash message, if any
-	res.render('signin', { message: req.flash('message') });
-	});
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-	successRedirect: '/index2',
+	successRedirect: '/profile',
 	failureRedirect: '/',
 	failureFlash : true 
 	}));
 
-	/* GET Registration Page */
-	router.get('/register', function(req, res){
-	res.render('register',{message: req.flash('message')});
-	});
-
 	/* Handle Registration POST */
-	router.post('/register', passport.authenticate('signup', {
-	successRedirect: '/index2',
-	failureRedirect: '/signup',
+	router.post('/register', passport.authenticate('register', {
+	successRedirect: '/login',
+	failureRedirect: '/register',
 	failureFlash : true 
 	}));
 
@@ -39,15 +35,60 @@ module.exports = function(passport) {
 	  res.redirect('/');
 	});
 
+	router.get('/v1/profile/', isAuthenticated, function(req, res) {
+		var User = require('../models/user.js');
+	    User.find({username: req.user.username}, function(err, data) {
+	      if (err) {throw err;}
+	      res.send(data);
+	    })
+	})
+
 	/* GET home page. */
 	router.get('/', function(req, res, next) {
-	res.sendfile('index.html');
+		res.sendfile('./public/index.html');
 	});
+
+	router.get('/v1/jobs/', isAuthenticated, function(req, res) {
+		var Job = require('../models/job.js');
+		Job.find({username: req.user.username}, function(err, data) {
+			if (err) {throw err;}
+			res.send(data);
+		})
+	})
+
+	//POST NEW JOB
+	router.post('/v1/jobs/', function(req, res) {
+		console.log(req.body);
+		var Job = require('../models/job.js');
+		
+		var newJob = new Job();
+
+		newJob.username = req.user.username;
+		newJob.jobtitle = req.body.jobtitle;
+		newJob.company = req.body.company;
+		newJob.location = req.body.location;
+		newJob.description = req.body.description;
+		newJob.comments = '';
+	    newJob.haveapplied = false;
+	    newJob.followupdate = null;
+	    newJob.contact = '';
+	    newJob.url = req.body.url;
+	    console.log(newJob)
+		newJob.save(function(err){
+		  if (err) {
+		    console.log("Error in saving job");
+		    throw err;
+		  }
+		  console.log("Jobs Saved!");
+		  res.sendStatus(200);
+		})
+	})
 
 	//GET JOBS FROM INDEED
 	router.get('/v1/jobsearch/', function(req, res) {
 	var jobs = [];
 	rp({
+
 	    url: 'http://api.indeed.com/ads/apisearch', //URL to hit
 	    qs: {
 		    publisher: 3660184810998158,
@@ -276,5 +317,7 @@ module.exports = function(passport) {
 
 	});
 	})
+
+	return router;
 }
 
