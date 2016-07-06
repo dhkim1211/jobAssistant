@@ -48,10 +48,30 @@ module.exports = function(passport) {
 		res.sendfile('./public/index.html');
 	});
 
+	//GET ALL JOBS BY USER
 	router.get('/v1/jobs/', isAuthenticated, function(req, res) {
 		var Job = require('../models/job.js');
 		Job.find({username: req.user.username}, function(err, data) {
 			if (err) {throw err;}
+			res.send(data);
+		})
+	})
+
+	//GET ONE JOB BY USER
+	router.get('/v1/jobs/details', isAuthenticated, function(req, res) {
+		var Job = require('../models/job.js');
+		Job.findById(req.query.id, function(err, data) {
+			if (err) {throw err;}
+			res.send(data);
+		})
+	})
+
+	//EDIT DUE DATE FOR SPECIFIC JOB
+	router.put('/v1/jobs/setdate', isAuthenticated, function(req, res) {
+		var Job = require('../models/job.js');
+		Job.findById(req.query.id, function(err, data) {
+			if (err) {throw err;}
+			data.duedate = req.body.duedate;
 			res.send(data);
 		})
 	})
@@ -70,9 +90,11 @@ module.exports = function(passport) {
 		newJob.description = req.body.description;
 		newJob.comments = '';
 	    newJob.haveapplied = false;
-	    newJob.followupdate = null;
+	    newJob.duedate = null;
 	    newJob.contact = '';
 	    newJob.url = req.body.url;
+    	newJob.followupdate = null;
+    	newJob.status = 'Interested';
 	    console.log(newJob)
 		newJob.save(function(err){
 		  if (err) {
@@ -115,6 +137,8 @@ module.exports = function(passport) {
 	        	job.location = body.results[i].formattedLocation;
 	        	job.createdAt = body.results[i].date;
 	        	job.description = body.results[i].snippet;
+	        	var regExp = /\<([^>]+)\>/g;
+	        	job.description.replace(regExp, "");
 	        	job.url = body.results[i].url;
 	        	jobs.push(job);
 	        }
@@ -145,6 +169,8 @@ module.exports = function(passport) {
 	        	job.location = body[i].location;
 	        	job.createdAt = body[i].created_at;
 	        	job.description = body[i].description;
+	        	var regExp = /\<([^>]+)\>/g;
+	        	job.description.replace(regExp, "");
 	        	job.url = body[i].url;
 	        	jobs.push(job);
 	        }
@@ -186,6 +212,8 @@ module.exports = function(passport) {
 	        	job.location = body.results[i].formattedLocation;
 	        	job.createdAt = body.results[i].date;
 	        	job.description = body.results[i].snippet;
+	        	var regExp = /\<([^>]+)\>/g;
+	        	job.description.replace(regExp, "");
 	        	job.url = body.results[i].url;
 	        	jobs.push(job);
 	        }
@@ -215,6 +243,8 @@ module.exports = function(passport) {
 	        	job.location = body[i].location;
 	        	job.createdAt = body[i].created_at;
 	        	job.description = body[i].description;
+	        	var regExp = /\<([^>]+)\>/g;
+	        	job.description.replace(regExp, "");
 	        	job.url = body[i].url;
 	        	jobs.push(job);
 	        }

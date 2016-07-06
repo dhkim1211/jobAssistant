@@ -1,6 +1,6 @@
 angular.module('restaurantPOS')
-.controller('JobsCtrl', ['$scope', '$http', '$location', '$rootScope', '$state',
-	function($scope, $http, $location, $rootScope, $state) {
+.controller('JobsCtrl', ['$scope', '$http', '$location', '$rootScope', '$state', '$window',
+	function($scope, $http, $location, $rootScope, $state, $window) {
 		$scope.jobs = $state.params.jobs;
 
 		//GET COMPANIES SEARCH FROM PAGE 
@@ -36,7 +36,7 @@ angular.module('restaurantPOS')
 				$state.go('profile');
 			})
 		}
-		
+
 		$scope.newTab = function(url) {
 			$window.open(url, '_blank');
 		}

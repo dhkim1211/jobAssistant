@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Cookie);
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -13,3 +15,15 @@ body {
 .card * {
 	margin-top: 8px;
 }
+
+h3 {
+	font-family: "Cookie";
+	color: #423;
+}
+
+.cookie {
+	font-family: "Cookie";
+	color: #423;
+	font-size: 1.7em;
+}
+

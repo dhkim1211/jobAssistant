@@ -14,9 +14,9 @@
 
 
 	<!-- JS -->
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
+
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 	<!--<script src="https://code.angularjs.org/1.4.5/angular-route.js"></script> -->
@@ -24,6 +24,7 @@
 	<script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.9/angular-materialize.min.js"></script>
+
 	<!-- ANGULAR CUSTOM -->
     <!--
     <script src="js/controllers/MainCtrl.js"></script>
@@ -66,6 +67,7 @@
 	<script src="/js/controllers/CompaniesCtrl.js"></script>
 	<script src="/js/controllers/ProfileCtrl.js"></script>
 	<script src="/js/controllers/MyJobsCtrl.js"></script>
+	<script src="/js/controllers/JobDetailCtrl.js"></script>
 
 	<script>
 		$(document).ready(function(){
@@ -78,7 +80,13 @@
 		})
 	</script>
 	<script>
-			$(document).ready(function() {$('select').material_select();});
+		$(document).ready(function() {
+			$('select').material_select();
+			$('.datepicker').pickadate({
+		    	selectMonths: true, // Creates a dropdown to control month
+			    selectYears: 15 // Creates a dropdown of 15 years to control year
+		  	});
+		});
 	</script>
 </body>
 </html>

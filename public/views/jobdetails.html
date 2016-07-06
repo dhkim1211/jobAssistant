@@ -1,0 +1,54 @@
+<div class="row">	
+	<div class="col m8 col s12 card yellow lighten-5" ng-controller="JobDetailCtrl">
+		<h3>{{detail.company}}</h3>
+		<ul>
+			<li>Job Title: {{detail.jobtitle}}</li>
+			<li>Location: {{detail.location}}</li>
+			<li>Job Description:</li>
+			<li>{{detail.description}}</li>
+			<li><a href ng-click="newTab(job.url)">View Posting</a></li>
+		</ul>
+	</div>
+	<div class="col m4 ">
+		<form id="jobstatus">
+			<input-field>
+				<p class="cookie">Job Status:</p>
+				<select id="currentstatus" name="currentstatus" ng-model="status" material-select watch>
+			        <option ng-repeat="value in statuses">{{value}}</option>
+			    </select>
+				<p class="cookie">Due Date:</p>
+				<input input-date
+				    type="text"
+				    name="duedate"
+				    id="duedate"
+				    ng-model="currentTime"
+				    container=""
+				    format="dd/mm/yyyy"
+				    months-full="{{ month }}"
+				    months-short="{{ monthShort }}"
+				    weekdays-full="{{ weekdaysFull }}"
+				    weekdays-short="{{ weekdaysShort }}"
+				    weekdays-letter="{{ weekdaysLetter }}"
+				    disable="disable"
+				    min="{{ minDate }}"
+				    max="{{ maxDate }}"
+				    today="today"
+				    clear="clear"
+				    close="close"
+				    select-years="15"
+				    on-start="onStart()"
+				    on-render="onRender()"
+				    on-open="onOpen()"
+				    on-close="onClose()"
+				    on-set="onSet()"
+				    on-stop="onStop()" />
+			    <p class="cookie">Contact:</p>
+			    <input type="text" ng-model="contact" length="100">
+			    <p class="cookie">Comments:</p>
+		    	<textarea class="materialize-textarea" ng-model="comment"></textarea>
+		    </input-field>
+		    
+		</form>
+	</div>
+</div>
+

@@ -1,4 +1,4 @@
-angular.module('restaurantPOS', ['ui.router'])
+angular.module('restaurantPOS', ['ui.router', 'ui.materialize'])
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
 			function($stateProvider, $urlRouterProvider, $locationProvider) {
 				$stateProvider
@@ -49,10 +49,18 @@ angular.module('restaurantPOS', ['ui.router'])
 								controller: 'ProfileCtrl'
 							},
 							'myjobs@profile': {
-								templateUrl: 'views/myjobs.html',
+								templateUrl: '/views/myjobs.html',
 								controller: 'MyJobsCtrl'
 							}
 						}
+					})
+					.state('jobdetails', {
+						url: '/jobdetails',
+						templateUrl: '/views/jobdetails.html',
+						params: {
+							details: null
+						},
+						controller: 'JobDetailCtrl'
 					})
 					.state('logout', {
 						url: '/logout',
