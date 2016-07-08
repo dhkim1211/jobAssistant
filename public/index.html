@@ -11,6 +11,7 @@
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
 	<link rel="stylesheet" href="/stylesheets/style.css"> <!-- custom styles -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> 
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
 
 	<!-- JS -->
@@ -19,7 +20,7 @@
 
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-	<!--<script src="https://code.angularjs.org/1.4.5/angular-route.js"></script> -->
+	<!-- <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>  -->
 	<!-- UI-Router -->
 	<script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.min.js"></script>
@@ -33,24 +34,39 @@
 -->
 
 </head>
-<body ng-app="restaurantPOS" ng-controller="MainCtrl">
+<body ng-app="restaurantPOS" ng-controller="MainCtrl" class="colorbg">
 	<!-- NAVBAR -->
 	<!-- HEADER -->
 	<nav role="navigation" class="teal lighten-2">
-	    <div class="nav-wrapper container">
+	    <div class="nav-wrapper container row hide-on-med-and-down">
+	    	<a href='/'><h3 class="titlelogo left">job<span class="tl2">Assistant</span></h3></a>
 	      <ul class="right hide-on-med-and-down">
-	        <li><a href="/" target="_self">Search</a></li>
-			<li><a href="/register" class="navlink">Register</a></li>
-			<li><a href="/login" class="navlink">Login</a></li>
-			<li><a href="/logout" class="navlink" target="_self">Logout</a></li>
-			<li><a href="/profile" class="navlink">Profile</a></li>
+	        <li><a href="/search" target="_self">Search</a></li>
+	        <!-- Dropdown Trigger -->
+
+			  
+	        <li><a class='dropdown-button' href='#' data-activates='dropdown1'>Account</a></li>
+	        	<!-- Dropdown Structure -->
+			  <ul id='dropdown1' class='dropdown-content'>
+			    <li><a href="/register">Register</a></li>
+			    <li class="divider"></li>
+			    <li><a href="/login">Login</a></li>
+			    <li class="divider"></li>
+			    <li><a href="/logout">Logout</a></li>
+			    <li class="divider"></li>
+			    <li><a href="/profile">Profile</a></li>
+			  </ul>
+			<!-- <li><a href="/register" class="navlink" ng-click="isLoggedIn()" ng-hide="loggedIn">Register</a></li>
+			<li><a href="/login" class="navlink" ng-click="isLoggedIn()" ng-hide="loggedIn">Login</a></li>
+			<li><a href="/logout" class="navlink" target="_self" ng-click="isLoggedIn()" ng-show="loggedIn">Logout</a></li>
+			<li><a href="/profile" class="navlink" ng-click="isLoggedIn()" ng-show="loggedIn">Profile </a></li> -->
 	      </ul>
 	      <ul id="nav-mobile" class="side-nav red lighten-2">
 	        <li><a href="/" target="_self">Search</a></li>
-			<li><a href="/register" class="navlink">Register</a></li>
-			<li><a href="/login" class="navlink">Login</a></li>
-			<li><a href="/logout" class="navlink" target="_self">Logout</a></li>
-			<li><a href="/profile" class="navlink">Profile</a></li>
+			<li><a href="/register" class="navlink" >Register</a></li>
+			<li><a href="/login" class="navlink" >Login</a></li>
+			<li><a href="/logout" class="navlink" target="_self" >Logout</a></li>
+			<li><a href="/profile" class="navlink" >Profile</a></li>
 	      </ul>
 	      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 	    </div>

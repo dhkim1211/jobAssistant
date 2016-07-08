@@ -1,19 +1,19 @@
 <div class="col m12" >
 	<div class="row">
-		<div class="col m10 offset-m1 col s6">
-			<h3>Explore Career Paths as a {{careers.response.jobTitle | uppercase}}</h3>
+		<div class="col m10 offset-m1 col s6 card grey lighten-5">
+			<h3>Career Profile for a {{careers.response.jobTitle | uppercase}}</h3>
 			<ul>
-				<li>Low Salary: {{careers.response.payLow | currency}}</li>
-				<li>Median Salary: {{careers.response.payMedian | currency}}</li>
-				<li>High Salary: {{careers.response.payHigh | currency}}</li>
+				<li><span class="oswald">Low Salary:</span> {{careers.response.payLow | currency}}</li>
+				<li><span class="oswald">Median Salary:</span> {{careers.response.payMedian | currency}}</li>
+				<li><span class="oswald">High Salary:</span> {{careers.response.payHigh | currency}}</li>
 			</ul>
-			<p>Related Careers:</p>
-			<div ng-repeat="career in careers.response.results">
+			<p class="oswald">Related Careers:</p>
+			<div ng-repeat="career in careers.response.results" class="card teal lighten-5">
 				<ul>
-					<li>Job Title: <a href="" ng-click="submitProgressTwo(career.nextJobTitle)">{{career.nextJobTitle | uppercase}}</a></li>
-					<li>Frequency: {{career.frequencyPercent | number:2}}%</li>
-					<li>National Jobs: {{career.nationalJobCount | number}}</li>
-					<li>Median Salary: {{career.medianSalary | currency}}</li>
+					<li><span class="oswald">Job Title:</span> <a href="" ng-click="submitProgressTwo(career.nextJobTitle)">{{career.nextJobTitle | uppercase}}</a></li>
+					<li><span class="oswald">Frequency:</span> {{career.frequencyPercent | number:2}}%</li>
+					<li><span class="oswald">National Jobs:</span> {{career.nationalJobCount | number}}</li>
+					<li><span class="oswald">Median Salary:</span> {{career.medianSalary | currency}}</li>
 				</ul>
 				
 			</div>

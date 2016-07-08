@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>-->
+  </head>
+  <body ng-app="jobAssistant" class="yellow lighten-3">
+    <div id="main_wrapper" ng-controller="MainCtrl">
+      <header>
+        <h4>My Marks</h1>
+      </header>
+    <div class="row">
+      <div class="col s8 offset-s2 m4 offset-m4 card">
+        
+        <div class="input-field">
+          <form class="form-signin login" action="/login" method="POST">
+            <h1 class="center-align login">Login</h1>
+            
+            <input class="form-control login center-align", type="text", name="username", placeholder="Username", required, autofocus>
+            <input class="form-control login center-align", type="password", name="password", placeholder="Password", required, >
+            <div class="center-align">
+              <button class="btn center-align login", type="submit">Login</button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <script src="angular.js"></script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
+<!--     <script src="scripts/storage.js"></script> -->
+    <script src="scripts/app.js"></script>
+    <!--<script src="scripts/helpers/storage.helper.js"></script>-->
+<!--     <script src="scripts/services/storage.service.js"></script> -->
+    <script src="scripts/controllers/main.controller.js"></script>
+<!--     <script src="scripts/directives/main.directive.js"></script> -->
+  </body>
+</html>

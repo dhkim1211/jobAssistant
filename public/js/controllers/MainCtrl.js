@@ -7,7 +7,28 @@ angular.module('restaurantPOS')
 		$scope.newTab = function(url) {
 			$window.open(url, '_blank');
 		}
-		
+
+	   //  	$http({
+	   //  		url: '/checklogin',
+	   //  		method: 'GET'
+	   //  	}).success(function(data) {
+				//   	console.log(data);
+				//   	$scope.loggedIn = data;
+				// })
+				// .error(function(data) {
+				//   	console.log('error: ' + data);
+				// });
+
+			// $http.get('/checklogin')
+			// 	.success(function(data) {
+			// 	  	console.log(data);
+			// 	  	$rootScope.loggedIn = data;
+			// 	})
+			// 	.error(function(data) {
+			// 	  	console.log('error: ' + data);
+			// 	});
+	    // };
+
 		//GET JOB SEARCH RESULTS
 		$scope.submit = function() {
 			console.log($scope.formData.country)

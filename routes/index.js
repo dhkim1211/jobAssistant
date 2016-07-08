@@ -43,6 +43,14 @@ module.exports = function(passport) {
 	    })
 	})
 
+	//CHECK IF USER IS LOGGED IN
+	router.get('/checklogin/',function(req,res){
+		if (req.user)
+			{res.send(true);}
+		else
+			{res.send(false);}
+	});
+
 	/* GET home page. */
 	router.get('/', function(req, res, next) {
 		res.sendfile('./public/index.html');
@@ -67,14 +75,47 @@ module.exports = function(passport) {
 	})
 
 	//EDIT DUE DATE FOR SPECIFIC JOB
-	router.put('/v1/jobs/setdate', isAuthenticated, function(req, res) {
+	// router.put('/v1/jobs/updatejob/:id', function(req, res) {
+	// 	var Job = require('../models/job.js');
+	// 	Job.findById(req.params.id, function(err, data) {
+	// 		console.log(req.params.id);
+	// 		if (data) {
+	// 			data.duedate = req.body.duedate;
+	// 			data.status = req.body.status;
+	// 			data.contact = req.body.contact;
+	// 			data.comments = req.body.comment;
+	// 			console.log(data);
+
+	// 			data.save(function(err){
+	// 			  if (err) {
+	// 			    console.log("Error in saving job");
+	// 			    throw err;
+	// 			  }
+	// 			  console.log("Jobs Saved!");
+	// 			  res.sendStatus(200);
+	// 		  	})
+	// 	  	}	
+				
+	// 		else {
+	// 			console.log("Job Not Found");
+	// 			res.sendStatus(500);
+	// 		}
+	// 	})
+	// })
+
+	//EDIT DUE DATE FOR SPECIFIC JOB
+	router.put('/v1/jobs/updatejob/:id', function(req, res) {
 		var Job = require('../models/job.js');
-		Job.findById(req.query.id, function(err, data) {
-			if (err) {throw err;}
-			data.duedate = req.body.duedate;
-			res.send(data);
+		Job.findByIdAndUpdate(req.params.id, {$set: {status: req.body.status, duedate: req.body.duedate, contact: req.body.contact, comments: req.body.comment}}, function(err, data) {
+			console.log(req.params.id)
+			console.log(req.body.status)
+			console.log(req.body.duedate)
+			console.log(req.body.comment)
+			console.log(req.body.contact)
+			res.sendStatus(200);
 		})
 	})
+	
 
 	//POST NEW JOB
 	router.post('/v1/jobs/', function(req, res) {
@@ -101,7 +142,7 @@ module.exports = function(passport) {
 		    console.log("Error in saving job");
 		    throw err;
 		  }
-		  console.log("Jobs Saved!");
+		  console.log("Job Updated!");
 		  res.sendStatus(200);
 		})
 	})

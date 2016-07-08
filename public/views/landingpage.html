@@ -1,70 +1,73 @@
-<div>	
-
+<div class="row banner">	
+	<div class="center-align col m12 landing">
+		<div class="center-align header">
+			<h1 class="passion">NEED A JOB?</h1>
+			<h3 class="passion2">Let <span class="tl3">jobAssistant</span> help <em>you</em> out!</h3>
+			<a href="/register"><button class="btn teal start">Get Started Now!</button></a>
+		</div>
+	</div>
 	<!--Home Search page -->
-	<div class="col m12">
+	<!-- <div class="col m12">
 		<div class="row">
-			<div class="col m10 offset-m1 col s6">
+			<div class="col m10 offset-m1 col s12 card grey lighten-5 center-align search">
 				<h3>Search Jobs</h3>
 
 				<form id="jobsearch", ng-submit="submit()">
 					<div class = "input-field row">
-						<input type="text", placeholder="Job Title or Company Name", class="validate col m8 form-control", name="keyword", ng-model="formData.keyword">
-						<input type="text", placeholder="Location (City, State)", class="validate col m8 form-control", name="location", ng-model="formData.location">
-<!-- 						<select class="col m8 form-control" name="country", type="text", ng-model="country", form="jobsearch" ng-options="country.name for country in countries"> -->
-
-<!-- 							<option value="", disable selected>Choose Country</option>
-							<option value="us">United States</option>
-							<option value="ar"> Argentina</option>
-							<option value="au"> Australia</option>
-							<option value="at"> Austria</option>
-							<option value="be"> Belgium</option>
-							<option value="br"> Brazil</option>
-							<option value="ca"> Canada</option>
-							<option value="cl"> Chile</option>
-							<option value="cn"> Canada</option>
-							<option value="co"> Colombia</option>
-							<option value="cz"> Czech Republic</option>
-							<option value="dk"> Denmark</option>
-							<option value="fi"> Finland</option>
-							<option value="fr"> France</option>
-							<option value="de"> Germany</option>
-							<option value="gr"> Greece</option>
-							<option value="hk"> Hong Kong</option>
-							<option value="mx"> Mexico</option>
-							<option value="nl"> Netherlands</option>
-							<option value="es"> Spain</option> -->
-						<!-- </select> -->
+						<div class="center-align">
+							<input type="text", placeholder="Job Title or Company Name", class="validate col m8 offset-m2 form-control center-align", name="keyword", ng-model="formData.keyword">
+							<input type="text", placeholder="Location (City, State)", class="validate col m8 offset-m2 form-control center-align", name="location", ng-model="formData.location">
+						</div>
 					</div>
 					<button type="submit", class="btn", value="submit">Submit</button>
 				</form>
 			</div>
 
-			<div class="col m10 offset-m1 col s6">
+			<div class="col m10 offset-m1 col s12 card center-align search">
 				<h3>Search Careers</h3>
 
 				<form class="jobprogress", ng-submit="submitProgress()">
 					<div class = "input-field row">
-						<input type="text", placeholder="Enter Job Title", class="validate col m8", name="jobtitle", ng-model="formData.jobtitle">
+						<input type="text", placeholder="Enter Job Title", class="validate col m8 offset-m2 center-align", name="jobtitle", ng-model="formData.jobtitle">
 					</div>
 					<button type="submit", class="btn">Submit</button>
 				</form>
 			</div>
 
-			<div class="col m10 offset-m1 col s6">
+			<div class="col m10 offset-m1 col s12 card center-align search">
 				<h3>Search Companies</h3>
 
 				<form class="employers", ng-submit="searchCompany()">
 					<div class = "input-field row">
-						<input type="text", placeholder="Enter Company Name", class="validate col m8", name="company", ng-model="formData.companyname">
-						<input type="text", placeholder="Enter Company Location", class="validate col m8", name="location", ng-model="formData.companylocation">
+						<input type="text", placeholder="Enter Company Name", class="validate col m8 offset-m2 center-align", name="company", ng-model="formData.companyname">
+						<input type="text", placeholder="Enter Company Location", class="validate col m8 offset-m2 center-align", name="location", ng-model="formData.companylocation">
 					</div>
 					<button type="submit", class="btn">Submit</button>
 				</form>
 			</div>
 		</div>
-	</div>
-
-
-
-	
+	</div> -->
 </div>
+<footer class="page-footer teal lighten-2">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h3 class="titlelogo left">job<span class="tl2">Assistant</span></h3>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links:</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="/">Search</a></li>
+          <li><a class="grey-text text-lighten-3" href="/register">Register</a></li>
+          <li><a class="grey-text text-lighten-3" href="/login">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    © 2016 David Honam Kim
+    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>

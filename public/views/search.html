@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col m12">
+		<div class="row">
+			<div class="col m8 offset-m2 col s12 card grey lighten-5 center-align search">
+				<h3>Search Jobs</h3>
+
+				<form id="jobsearch", ng-submit="submit()">
+					<div class = "input-field row">
+						<div class="center-align">
+							<input type="text", placeholder="Job Title or Company Name", class="validate col m8 offset-m2 form-control center-align", name="keyword", ng-model="formData.keyword">
+							<input type="text", placeholder="Location (City, State)", class="validate col m8 offset-m2 form-control center-align", name="location", ng-model="formData.location">
+						</div>
+					</div>
+					<button type="submit", class="btn", value="submit">Submit</button>
+				</form>
+			</div>
+
+			<div class="col m8 offset-m2 col s12 card center-align search">
+				<h3>Search Careers</h3>
+
+				<form class="jobprogress", ng-submit="submitProgress()">
+					<div class = "input-field row">
+						<input type="text", placeholder="Enter Job Title", class="validate col m8 offset-m2 center-align", name="jobtitle", ng-model="formData.jobtitle">
+					</div>
+					<button type="submit", class="btn">Submit</button>
+				</form>
+			</div>
+
+			<div class="col m8 offset-m2 col s12 card center-align search">
+				<h3>Search Companies</h3>
+
+				<form class="employers", ng-submit="searchCompany()">
+					<div class = "input-field row">
+						<input type="text", placeholder="Enter Company Name", class="validate col m8 offset-m2 center-align", name="company", ng-model="formData.companyname">
+						<input type="text", placeholder="Enter Company Location", class="validate col m8 offset-m2 center-align", name="location", ng-model="formData.companylocation">
+					</div>
+					<button type="submit", class="btn">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

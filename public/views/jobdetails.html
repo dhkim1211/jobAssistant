@@ -1,27 +1,52 @@
 <div class="row">	
-	<div class="col m8 col s12 card yellow lighten-5" ng-controller="JobDetailCtrl">
+	<div class="col m8 col s12 card grey lighten-5" ng-controller="JobDetailCtrl">
 		<h3>{{detail.company}}</h3>
-		<ul>
-			<li>Job Title: {{detail.jobtitle}}</li>
-			<li>Location: {{detail.location}}</li>
-			<li>Job Description:</li>
-			<li>{{detail.description}}</li>
-			<li><a href ng-click="newTab(job.url)">View Posting</a></li>
-		</ul>
+		<div class="col m6 left">
+			<ul>
+				<li><span class="oswald">Job Title:</span> {{detail.jobtitle}}</li>
+				<li><span class="oswald">Location:</span> {{detail.location}}</li>
+				<li><span class="oswald">Job Description:</span> </li>
+				
+			</ul>
+		</div>
+		<div class="col m6 right">
+			<ul>
+				<li ng-show="detail.status"><span class="oswald">Job Status:</span> {{detail.status}}</li>
+				<li ng-show="detail.duedate"><span class="oswald">Due Date:</span> {{detail.duedate | date}}</li>
+				<li ng-show="detail.contact"><span class="oswald">Contact:</span> {{detail.contact}}</li>
+			</ul>
+		</div>
+		<div class="col m12">
+			<ul>
+				<li>{{detail.description}}</li>
+				<li><a href ng-click="newTab(job.url)">View Full Posting</a></li>
+			</ul>
+		</div>
+		<div class="card teal lighten-5 col m12">
+			<ul>
+				<li ng-show="detail.comments"><span class="oswald">Comments:</span></li>
+				<li ng-show="detail.comments">{{detail.comments}}</li>
+			</ul>
+		</div>
 	</div>
 	<div class="col m4 ">
-		<form id="jobstatus">
+		<form id="jobstatus" ng-submit="updateJobInfo()">
+			<h3 class="center-align">Edit Job Details:</h3>
 			<input-field>
-				<p class="cookie">Job Status:</p>
-				<select id="currentstatus" name="currentstatus" ng-model="status" material-select watch>
-			        <option ng-repeat="value in statuses">{{value}}</option>
+				<select ng-model="formData.status" ng-options="status.name for status in statuses" material-select watch>
+			        <!-- <option ng-repeat="value in statuses">{{value}}</option> -->
 			    </select>
-				<p class="cookie">Due Date:</p>
+		    </input-field>
+		    <input-field>
+		    	<input type="date" class="datepicker" ng-model="formData.duedate">
+		    </input-field>
+		   <!--  <input-field>
+				<label class="cookie">Due Date:</label>
 				<input input-date
-				    type="text"
+				    type="date"
 				    name="duedate"
 				    id="duedate"
-				    ng-model="currentTime"
+				    ng-model="formData.duedate"
 				    container=""
 				    format="dd/mm/yyyy"
 				    months-full="{{ month }}"
@@ -42,12 +67,18 @@
 				    on-close="onClose()"
 				    on-set="onSet()"
 				    on-stop="onStop()" />
-			    <p class="cookie">Contact:</p>
-			    <input type="text" ng-model="contact" length="100">
-			    <p class="cookie">Comments:</p>
-		    	<textarea class="materialize-textarea" ng-model="comment"></textarea>
+		    </input-field> -->
+		    <input-field>
+			    <label class="cookie">Contact:</label>
+			    <input type="text" ng-model="formData.contact" length="100">
 		    </input-field>
-		    
+		    <input-field>
+			    <label class="cookie">Comments:</label>
+		    	<textarea class="materialize-textarea" ng-model="formData.comment"></textarea>
+		    </input-field>
+		    <div class="center-align">
+		    	<button type="submit", class="btn red lighten-2", value="submit" message="{{message}}" duration="1000" toast='click'>Update Info</button>
+	    	</div>
 		</form>
 	</div>
 </div>

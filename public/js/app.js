@@ -7,6 +7,11 @@ angular.module('restaurantPOS', ['ui.router', 'ui.materialize'])
 						templateUrl:'/views/landingpage.html',
 						controller: 'MainCtrl'
 					})
+					.state('search', {
+						url: '/search',
+						templateUrl: '/views/search.html',
+						controller: 'MainCtrl'
+					})
 					.state('jobs', {
 						url: '/jobs',
 						templateUrl: '/views/jobs.html',
@@ -64,9 +69,10 @@ angular.module('restaurantPOS', ['ui.router', 'ui.materialize'])
 					})
 					.state('logout', {
 						url: '/logout',
-						controller: function($window) {
-							User.logout();
-							$state.go('home');
+						controller: function($window, $state) {
+							// User.logout();
+							$state.go('logout');
+							$window.location.reload();
 						}
 					})
 				$locationProvider.html5Mode(true);

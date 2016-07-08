@@ -2,23 +2,29 @@
 	<div class="row">
 		<div class="col m10 offset-m1 col s6">
 			<h3>Search Results:</h3>
-			<div ng-repeat="company in companies.response.employers">
-				<img src="{{company.squareLogo}}">
-				<ul>
-					<li>Company: <a href="{{company.url}}" ng-click="searchCompanyTwo(company.name)">{{company.name}}</a></li>
-					<li>Website: {{company.website}}</li>
-					<li>Industry: {{company.industry}}</li>
-					<li>Overall Rating: {{company.overallRating}} - {{company.ratingDescription}}</li>
+			<div ng-repeat="company in companies.response.employers" class="card grey lighten-5 row">
+				
+				<div class="col m9 s12 left">
 					<ul>
-						<li>Culture & Values: {{company.cultureAndValuesRating}}</li>
-						<li>Senior Leadership: {{company.seniorLeadershipRating}}</li>
-						<li>Compensation & Benefits: {{company.compensationAndBenefitsRating}}</li>
-						<li>Career Opportunities: {{company.careerOpportunitiesRating}}</li>
-						<li>Work Life Balance: {{company.workLifeBalanceRating}}</li>
-						<li>Recommend To Friend:{{company.recommendToFriendRating}}</li>
+						<li><span class="oswald">Company:</span> <a href="{{company.url}}" ng-click="searchCompanyTwo(company.name)">{{company.name}}</a></li>
+						<li><span class="oswald">Website:</span> <a href="{{company.website}}">{{company.website}}</a></li>
+						<li><span class="oswald">Industry:</span> {{company.industry}}</li>
+						<li><span class="oswald">Overall Rating:</span> {{company.overallRating}} - {{company.ratingDescription}}</li>
+						<ul>
+							<li><span class="oswald">Culture & Values:</span> {{company.cultureAndValuesRating}}</li>
+							<li><span class="oswald">Senior Leadership:</span> {{company.seniorLeadershipRating}}</li>
+							<li><span class="oswald">Compensation & Benefits:</span> {{company.compensationAndBenefitsRating}}</li>
+							<li><span class="oswald">Career Opportunities:</span> {{company.careerOpportunitiesRating}}</li>
+							<li><span class="oswald">Work Life Balance:</span> {{company.workLifeBalanceRating}}</li>
+							<li><span class="oswald">Recommend To Friend:</span> {{company.recommendToFriendRating}}</li>
+						</ul>
 					</ul>
-				</ul>
-				<button class="btn" ng-click="searchCompanyJobs(company.name)">View Jobs @ {{company.name}}</button>
+					<button class="btn" ng-click="searchCompanyJobs(company.name)">View Jobs @ {{company.name}}</button>
+				</div>
+				<div class="col m3 s12 right">
+					<img src="{{company.squareLogo}}">
+				</div>
+				
 			</div>
 		</div>
 	</div>

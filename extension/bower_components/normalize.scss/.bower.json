@@ -1,0 +1,42 @@
+{
+  "name": "normalize-scss",
+  "version": "3.0.0+normalize.3.0.1",
+  "homepage": "https://github.com/JohnAlbin/normalize-scss",
+  "author": [
+    "Nicolas Gallagher",
+    "John Albin Wilkins"
+  ],
+  "description": "This is the Sass/Compass version of Normalize.css, a collection of HTML element and attribute rulesets to normalize styles across all browsers.",
+  "main": "_normalize.scss",
+  "keywords": [
+    "normalize",
+    "reset",
+    "typography",
+    "design",
+    "ui"
+  ],
+  "license": [
+    "MIT",
+    "GPLv2"
+  ],
+  "ignore": [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "component.json",
+    "package.json",
+    "normalize-scss.gemspec",
+    "sache.json",
+    "test.html",
+    "lib",
+    "tests"
+  ],
+  "_release": "3.0.0+normalize.3.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.0+normalize.3.0.1",
+    "commit": "f2fecbff0d0a707f1ea0ddb96589410dc9a1dbb8"
+  },
+  "_source": "https://github.com/JohnAlbin/normalize-scss.git",
+  "_target": "3.0.0",
+  "_originalSource": "normalize.scss"
+}

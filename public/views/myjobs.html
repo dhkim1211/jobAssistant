@@ -1,6 +1,5 @@
-<div class="col m8 offset-m1 col s12 card yellow lighten-5" ng-controller="MyJobsCtrl">
-		<h3>My Saved Jobs:</h3>
-		<div class="card teal lighten-4 row" ng-repeat="job in myjobs.data | orderBy: 'createdAt'">
+<div class="col m8 offset-m2 col s12 card teal lighten-4" ng-controller="MyJobsCtrl">
+		<div class="card grey lighten-5 row" ng-repeat="job in myjobs.data | orderBy: 'createdAt'">
 			<div class="col m9">
 				<ul>
 					<li><a href ng-click="newTab(job.url)">{{job.jobtitle}}</a> @ <a href ng-click="searchCompanyTwo(job.company, job.location)">{{job.company}}</a></li>
@@ -9,9 +8,9 @@
 				</ul>
 			</div>
 			<div class="col m3">
-				<button class="btn">{{job.status}}</button>
 				<button class="btn grey darken-1" ng-click="getDetails(job._id)">Details</button>
-				<button class="btn red lighten-2">Due Date:</button>
+				<button class="btn">{{job.status}}</button>
+				<button ng-show="job.duedate" class="btn red lighten-2">{{job.duedate | date}}</button>
 			</div>
 		</div>
 </div>
